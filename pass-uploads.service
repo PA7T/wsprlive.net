@@ -1,0 +1,16 @@
+# /etc/systemd/system
+# systemd file for initiating incorporating uploads from ALL_WSPR.TXT to InfluxDB
+[Unit]
+Description=Initiate incorporating uploads from ALL_WSPR.TXT to InfluxDB
+After=network-online.target
+
+[Service]
+User=wsprlive
+Group=psacln
+LimitNOFILE=65536
+ExecStart=/YOUR_PASS_TO/pass_uploads.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+Alias=pass-uploads.service
